@@ -25,7 +25,7 @@ jobs:
       - name: Terraform init
         id: init
         run: terraform init -backend-config="bucket=$TF_STATE_BUCKET_NAME" -backend-config="region=eu-north-1"
-        working-directory: ./terraform
+        working-directory: ./Terraform
       - name: Terraform plan
         id: plan
         run: |-
@@ -35,11 +35,11 @@ jobs:
           -var="private_key=$PRIVATE_SSH_KEY" \
           -var="key_name=deployer-key" \
           -out=PLAN
-        working-directory: ./terraform
+        working-directory: ./Terraform
       - name: Terraform Apply
         id: apply
         run: terraform apply PLAN
-        working-directory: ./terraform
+        working-directory: ./Terraform
 
 
 
