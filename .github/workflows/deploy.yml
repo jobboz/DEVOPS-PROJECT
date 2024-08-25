@@ -64,8 +64,9 @@ jobs:
           IMAGE_TAG: ${{ github.sha}}
         run: |-
           docker build -t $REGISTRY/$REPOSITRY:$IMAGE_TAG .
-          DOCKER PUSH $REGISTRY/$REPOSITRY:$IMAGE_TAG 
-      - name:  dploy docker image to ECR
+          docker push $REGISTRY/$REPOSITRY:$IMAGE_TAG 
+        working-directory: ./nodeapp
+      - name: Deploy docker image to ECR
         env: 
           REGISTRY: ${{ steps.login-ecr.outputs.registry}}
           REPOSITRY: example-node-app
