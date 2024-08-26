@@ -32,7 +32,7 @@ resource "aws_instance" "server" {
     timeout     = "4m"
    }
    tags = {
-      "name" = "DeployVM"
+       Name = "MyInstance"
    }
 }
 
