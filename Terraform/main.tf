@@ -33,7 +33,7 @@ resource "aws_instance" "server" {
     timeout     = "4m"
    }
    tags = {
-      Name = "my_instance"
+      "name" = "my_instance"
    }
 }
 
