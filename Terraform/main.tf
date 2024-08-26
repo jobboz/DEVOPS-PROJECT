@@ -24,6 +24,7 @@ resource "aws_instance" "server" {
   key_name      = aws_key_pair.deployer.key_name
   vpc_security_group_ids = [aws_security_group.maingroup.id]
   iam_instance_profile =  aws_iam_instance_profile.ec2profile.name
+
   connection {
     type        = "ssh"
     host        = self.public_ip
@@ -32,7 +33,7 @@ resource "aws_instance" "server" {
     timeout     = "4m"
    }
    tags = {
-       Name = "MyInstance"
+      "name" = "my_instance"
    }
 }
 
