@@ -21,6 +21,7 @@ provider "aws" {
 resource "aws_instance" "server" {
   ami           = "ami-04cdc91e49cb06165"
   instance_type = "t3.micro"
+  instance_id   = "i-03d827f8e778ec6f3"
   key_name      = aws_key_pair.deployer.key_name
   vpc_security_group_ids = [aws_security_group.maingroup.id]
   iam_instance_profile =  aws_iam_instance_profile.ec2profile.name
@@ -67,8 +68,8 @@ resource "aws_security_group" "maingroup" {
             prefix_list_ids  = []
             protocol         = "tcp"
             security_groups  = []
-            self = false
-            to_port = 22
+            self            = false
+            to_port         = 22
         },
           {
             cidr_blocks      = ["0.0.0.0/0", ]
@@ -99,6 +100,10 @@ resource "aws_key_pair" "deployer" {
 output "instance_public_ip" {
     value = aws_instance.server.public_ip
     sensitive = true
+}
+
+output "instance_id" {
+  value = aws_instance.my_instance.id
 }
 
 
