@@ -33,7 +33,7 @@ resource "aws_instance" "server" {
     timeout     = "4m"
    }
    tags = {
-      "name" = "DeployVM"
+      Name = "my_instance"
    }
 }
 
@@ -102,9 +102,9 @@ output "instance_public_ip" {
     sensitive = true
 }
 
-# output "instance_id" {
-#   value = aws_instance.my_instance.id
-# }
+output "instance_id" {
+  value = aws_instance.my_instance.id
+}
 
 
 
