@@ -21,7 +21,6 @@ provider "aws" {
 resource "aws_instance" "server" {
   ami           = "ami-04cdc91e49cb06165"
   instance_type = "t3.micro"
-  instance_id   = "i-03d827f8e778ec6f3"
   key_name      = aws_key_pair.deployer.key_name
   vpc_security_group_ids = [aws_security_group.maingroup.id]
   iam_instance_profile =  aws_iam_instance_profile.ec2profile.name
