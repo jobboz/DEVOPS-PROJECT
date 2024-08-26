@@ -33,10 +33,9 @@ resource "aws_instance" "server" {
     timeout     = "4m"
    }
    tags = {
-      "name" = "my_instance"
+      "name" = "DeployVM"
    }
 }
-
 
 resource "aws_iam_instance_profile" "ec2profile" {
     name = "ec2-profile"
@@ -103,10 +102,9 @@ output "instance_public_ip" {
     sensitive = true
 }
 
-
-output "instance_id" {
-  value = aws_instance.my_instance.id
-}
+# output "instance_id" {
+#   value = aws_instance.my_instance.id
+# }
 
 
 
