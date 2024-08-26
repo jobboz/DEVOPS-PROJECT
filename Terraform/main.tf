@@ -37,6 +37,7 @@ resource "aws_instance" "server" {
    }
 }
 
+
 resource "aws_iam_instance_profile" "ec2profile" {
     name = "ec2-profile"
     role = "EC2-ECR-AUTH"
@@ -101,6 +102,7 @@ output "instance_public_ip" {
     value = aws_instance.server.public_ip
     sensitive = true
 }
+
 
 output "instance_id" {
   value = aws_instance.my_instance.id
